@@ -1,8 +1,8 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, ArrowLeft, ArrowRight, Volume2, VolumeX, Stars, Sparkles, Music, Gift } from 'lucide-react';
-import Confetti from './Confetti';
+import { Heart, Volume2, VolumeX, Music, Gift } from 'lucide-react';
+// import Confetti from './Confetti';
 import PhotoGallery from './PhotoGallery';
 import Quote from './Quote';
 
@@ -44,11 +44,11 @@ photos.sort((a, b) => a.id - b.id);
 
 const ValentinesPage = () => {
   const [showLoveMessage, setShowLoveMessage] = useState(false);
-  const [showConfetti, setShowConfetti] = useState(false);
+  // const [showConfetti, setShowConfetti] = useState(false);
   // const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [currentMessage, setCurrentMessage] = useState(0);
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const loveMessages = [
     "I love You ",
@@ -69,22 +69,32 @@ const ValentinesPage = () => {
   }, []);
 
   const handleHeartClick = () => {
-    setShowConfetti(true);
+    // setShowConfetti(true);
     setShowLoveMessage(true);
     setCurrentMessage((prev) => (prev + 1) % loveMessages.length);
-    setTimeout(() => setShowConfetti(false), 2000);
+    // setTimeout(() => setShowConfetti(false), 2000);
     setTimeout(() => setShowLoveMessage(false), 3000);
   };
 
+  <audio ref={audioRef} src="/sounds/tumSeHi.mp3" />
   const toggleMusic = () => {
+    if (!audioRef.current) return; // Ensure the ref is not null
+  
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+  
     setIsPlaying(!isPlaying);
-    isPlaying ? audioRef.current.pause() : audioRef.current.play();
   };
-
+  
+  
+  
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-rose-100">
-      <audio ref={audioRef} src="/sounds/tumSeHi.mp3" />
-      <Confetti isActive={showConfetti} />
+      
+      {/* <Confetti isActive={showConfetti} /> */}
 
       {/* Music Control */}
       <motion.button
@@ -231,7 +241,7 @@ const ValentinesPage = () => {
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                Happy Valentine's Day
+                Happy Valentine&apos;s Day
               </motion.span>
               <br />
               <motion.span 
