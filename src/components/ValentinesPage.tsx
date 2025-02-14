@@ -76,7 +76,7 @@ const ValentinesPage = () => {
     setTimeout(() => setShowLoveMessage(false), 3000);
   };
 
-  <audio ref={audioRef} src="/sounds/tumSeHi.mp3" />
+  
   const toggleMusic = () => {
     if (!audioRef.current) return; // Ensure the ref is not null
   
@@ -95,6 +95,7 @@ const ValentinesPage = () => {
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-rose-100">
       
       {/* <Confetti isActive={showConfetti} /> */}
+      <audio ref={audioRef} src="/sounds/tumSeHi.mp3" />
 
       {/* Music Control */}
       <motion.button
