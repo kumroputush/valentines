@@ -1,18 +1,19 @@
-import type { Config } from "tailwindcss";
-
-export default {
+// tailwind.config.js
+module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      animation: {
+        float: 'float 6s ease-in-out infinite',
+        heartBeat: 'heartBeat 1.5s infinite',
+        fadeIn: 'fadeIn 1s ease-out',
+        slideUp: 'slideUp 1s ease-out',
       },
     },
   },
   plugins: [],
-} satisfies Config;
+}
